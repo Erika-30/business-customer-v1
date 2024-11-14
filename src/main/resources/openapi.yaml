@@ -1,0 +1,198 @@
+openapi: 3.0.1
+info:
+  title: API Business Customer V1
+  description: API for managing customers in a banking.
+  version: 1.0.0
+tags:
+  - name: CustomerController
+    description: Customer Controller
+paths:
+  /customers:
+    post:
+      tags:
+        - CustomerController
+      summary: Create a new customer
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequest'
+      responses:
+        '201':
+          description: Customer successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCustomerResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+    get:
+      tags:
+        - CustomerController
+      summary: List all customers
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerResponse'
+        '500':
+          description: Internal server error
+
+  /customers/{id}:
+    get:
+      tags:
+        - CustomerController
+      summary: Get customer details by ID
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '404':
+          description: Customer not found
+    put:
+      tags:
+        - CustomerController
+      summary: Update customer information
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequest'
+      responses:
+        '200':
+          description: Customer successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Invalid request
+        '404':
+          description: Customer not found
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+        - CustomerController
+      summary: Delete a customer
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Customer successfully deleted
+        '404':
+          description: Customer not found
+        '500':
+          description: Internal server error
+
+components:
+  parameters:
+    RequestIdHeader:
+      name: request-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for tracking the request
+  schemas:
+    CustomerRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Customer's first name
+          example: John
+          pattern: '^[A-Za-z]+$' # Only alphabetic characters
+          minLength: 1
+          maxLength: 100
+        lastName:
+          type: string
+          description: Customer's last name
+          example: Doe
+          pattern: '^[A-Za-z]+$' # Only alphabetic characters
+          minLength: 1
+          maxLength: 100
+        dni:
+          type: string
+          description: Unique DNI of the customer
+          example: 12345678
+          pattern: '^[0-9]+$' # Exactly 8 digits
+          minLength: 8
+          maxLength: 8
+        email:
+          type: string
+          description: Customer's email
+          format: email
+          example: john.doe@example.com
+      required:
+        - firstName
+        - lastName
+        - dni
+    CreateCustomerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the customer
+          example: 556c9255-3328-4f7c-95c1-f122a86a2992
+    CustomerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the customer
+        firstName:
+          type: string
+          description: Customer's first name
+          example: John
+        lastName:
+          type: string
+          description: Customer's last name
+          example: Doe
+        dni:
+          type: string
+          description: Unique DNI of the customer
+          example: 12345678
+        email:
+          type: string
+          description: Customer's email
+          format: email
+          example: john.doe@example.com
+      required:
+        - firstName
+        - lastName
+        - dni
