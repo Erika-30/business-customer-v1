@@ -1,0 +1,824 @@
+{
+	"info": {
+		"_postman_id": "9c517cc6-40ca-43ca-84f8-b17eec8a6bda",
+		"name": "API Business Customer V1",
+		"description": "API for managing customers in a banking.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39768977"
+	},
+	"item": [
+		{
+			"name": "customers",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Get customer details by ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "request-id",
+										"value": "<string>",
+										"description": "(Required) Unique identifier for tracking the request"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8081/customer/v1/customers/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"customer",
+										"v1",
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Customer information",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "request-id",
+												"value": "<string>",
+												"description": "(Required) Unique identifier for tracking the request"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/customers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"dni\": \"<string>\",\n  \"id\": \"<string>\",\n  \"email\": \"<email>\"\n}"
+								},
+								{
+									"name": "Customer not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "request-id",
+												"value": "<string>",
+												"description": "(Required) Unique identifier for tracking the request"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/customers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update customer information",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "request-id",
+										"value": "<string>",
+										"description": "(Required) Unique identifier for tracking the request"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"ZHToNaAuFC\",\n  \"lastName\": \"HbvteFQZDl\",\n  \"dni\": \"66666666\",\n  \"email\": \"vito9@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Customer successfully updated",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "request-id",
+												"value": "<string>",
+												"description": "(Required) Unique identifier for tracking the request"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"ZHToNaAuFC\",\n  \"lastName\": \"HbvteFQZDl\",\n  \"dni\": \"66666666\",\n  \"email\": \"<email>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/customers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"dni\": \"<string>\",\n  \"id\": \"<string>\",\n  \"email\": \"<email>\"\n}"
+								},
+								{
+									"name": "Invalid request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "request-id",
+												"value": "<string>",
+												"description": "(Required) Unique identifier for tracking the request"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"ZHToNaAuFC\",\n  \"lastName\": \"HbvteFQZDl\",\n  \"dni\": \"66666666\",\n  \"email\": \"<email>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/customers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Customer not found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "request-id",
+												"value": "<string>",
+												"description": "(Required) Unique identifier for tracking the request"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"ZHToNaAuFC\",\n  \"lastName\": \"HbvteFQZDl\",\n  \"dni\": \"66666666\",\n  \"email\": \"<email>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/customers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Internal server error",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "request-id",
+												"value": "<string>",
+												"description": "(Required) Unique identifier for tracking the request"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"ZHToNaAuFC\",\n  \"lastName\": \"HbvteFQZDl\",\n  \"dni\": \"66666666\",\n  \"email\": \"<email>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/customers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete a customer",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "request-id",
+										"value": "<string>",
+										"description": "(Required) Unique identifier for tracking the request"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Customer successfully deleted",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "request-id",
+												"value": "<string>",
+												"description": "(Required) Unique identifier for tracking the request"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/customers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Customer not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "request-id",
+												"value": "<string>",
+												"description": "(Required) Unique identifier for tracking the request"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/customers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Internal server error",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "request-id",
+												"value": "<string>",
+												"description": "(Required) Unique identifier for tracking the request"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/customers/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Create a new customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "request-id",
+								"value": "<string>",
+								"description": "(Required) Unique identifier for tracking the request"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"ZHToNaAuFC\",\n  \"lastName\": \"HbvteFQZDl\",\n  \"dni\": \"66666666\",\n  \"email\": \"vito@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Customer successfully created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "request-id",
+										"value": "<string>",
+										"description": "(Required) Unique identifier for tracking the request"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"ZHToNaAuFC\",\n  \"lastName\": \"HbvteFQZDl\",\n  \"dni\": \"66666666\",\n  \"email\": \"<email>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<string>\"\n}"
+						},
+						{
+							"name": "Invalid request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "request-id",
+										"value": "<string>",
+										"description": "(Required) Unique identifier for tracking the request"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"ZHToNaAuFC\",\n  \"lastName\": \"HbvteFQZDl\",\n  \"dni\": \"66666666\",\n  \"email\": \"<email>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal server error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "request-id",
+										"value": "<string>",
+										"description": "(Required) Unique identifier for tracking the request"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"ZHToNaAuFC\",\n  \"lastName\": \"HbvteFQZDl\",\n  \"dni\": \"66666666\",\n  \"email\": \"<email>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "List all customers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "request-id",
+								"value": "<string>",
+								"description": "(Required) Unique identifier for tracking the request"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/customer/v1/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"customer",
+								"v1",
+								"customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List of customers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "request-id",
+										"value": "<string>",
+										"description": "(Required) Unique identifier for tracking the request"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dni\": \"<string>\",\n    \"id\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dni\": \"<string>\",\n    \"id\": \"<string>\",\n    \"email\": \"<email>\"\n  }\n]"
+						},
+						{
+							"name": "Internal server error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "request-id",
+										"value": "<string>",
+										"description": "(Required) Unique identifier for tracking the request"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8081/customer/v1"
+		}
+	]
+}

@@ -1,9 +1,9 @@
 package com.bcp.services.customer.web;
 
-import com.bcp.services.account.api.CustomerControllerApiDelegate;
-import com.bcp.services.account.model.CreateCustomerResponse;
-import com.bcp.services.account.model.CustomerRequest;
-import com.bcp.services.account.model.CustomerResponse;
+import com.bcp.services.customer.api.CustomerControllerApiDelegate;
+import com.bcp.services.customer.model.CreateCustomerResponse;
+import com.bcp.services.customer.model.CustomerRequest;
+import com.bcp.services.customer.model.CustomerResponse;
 import com.bcp.services.customer.business.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,7 +25,12 @@ public class CustomerController implements CustomerControllerApiDelegate {
   @Override
   public ResponseEntity<List<CustomerResponse>> customersGet(String requestId) {
 
-    return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    var customers = customerService.findAll();
+    if (customers.isEmpty()) {
+      return ResponseEntity.notFound().build();
+    } else {
+      return ResponseEntity.ok(customers);
+    }
 
   }
 
@@ -40,7 +45,9 @@ public class CustomerController implements CustomerControllerApiDelegate {
   public ResponseEntity<CustomerResponse> customersIdGet(String requestId,
                                                           String id) {
 
-    return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    return customerService.findById(Long.valueOf(id))
+            .map(ResponseEntity::ok)
+            .orElseGet(() -> ResponseEntity.notFound().build());
 
   }
 
@@ -49,7 +56,9 @@ public class CustomerController implements CustomerControllerApiDelegate {
                                                           String id,
                                                           CustomerRequest customerRequest) {
 
-    return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    return customerService.update(id, customerRequest)
+            .map(ResponseEntity::ok)
+            .orElseGet(() -> ResponseEntity.notFound().build());
 
   }
 
@@ -57,7 +66,9 @@ public class CustomerController implements CustomerControllerApiDelegate {
   public ResponseEntity<CreateCustomerResponse> customersPost(String requestId,
                                                                CustomerRequest customerRequest) {
 
-    return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    return customerService.save(customerRequest)
+            .map(createCustomerResponse -> new ResponseEntity(createCustomerResponse, HttpStatus.CREATED))
+            .orElseGet(() -> ResponseEntity.badRequest().build());
 
   }
 

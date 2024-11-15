@@ -1,17 +1,20 @@
 package com.bcp.services.customer.business;
 
-
-import com.bcp.services.customer.model.Customer;
+import com.bcp.services.customer.model.CreateCustomerResponse;
+import com.bcp.services.customer.model.CustomerRequest;
+import com.bcp.services.customer.model.CustomerResponse;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CustomerService {
-    List<Customer> findAll() ;
+    List<CustomerResponse> findAll();
 
-    Optional<Customer> findById(Long id) ;
+    Optional<CustomerResponse> findById(Long id);
 
-    Customer save(Customer customer) ;
+    Optional<CreateCustomerResponse> save(CustomerRequest request);
 
-    void deleteById(Long id) ;
+    Optional<CustomerResponse> update(String id, CustomerRequest customerRequest);
+
+    void deleteById(Long id);
 }
